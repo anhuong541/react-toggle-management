@@ -1,6 +1,6 @@
 {
   "name": "react-toggle-management",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -21,7 +21,7 @@
   ],
   "author": "Huong Nguyen nxahuong.181.2001@gmail.com",
   "license": "ISC",
-  "description": "A library for managing toggle global states in React better than Redux and simpler than Zustand",
+  "description": "A simple lightweight library for managing toggle global states in React. Better than Redux and simpler than Zustand",
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
