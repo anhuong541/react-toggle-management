@@ -12,7 +12,7 @@ interface ToggleStateContextProviderProps {
 // Create a default store instance (can be overridden)
 const defaultToggleStore = createToggleStore()
 
-export default function ToggleStateContextProvider({
+export default function ToggleGlobalProvider({
   children,
   initialState
 }: ToggleStateContextProviderProps) {
