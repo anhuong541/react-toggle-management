@@ -1,0 +1,36 @@
+{
+  "name": "react-toggle-management",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsup",
+    "dev": "tsup --watch",
+    "prepare": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "toggle",
+    "state management",
+    "context",
+    "useSyncExternalStore",
+    "library"
+  ],
+  "author": "Huong Nguyen nxahuong.181.2001@gmail.com",
+  "license": "ISC",
+  "description": "A library for managing toggle global states in React better than Redux and simpler than Zustand",
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  }
+}

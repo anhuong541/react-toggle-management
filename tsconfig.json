@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "esnext", // Or your desired target (e.g., "es2017")
+    "module": "esnext",
+    "lib": ["dom", "es2017"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true, // Generate declaration files (.d.ts)
+    "declarationDir": "dist", // Output declaration files to the dist directory
+    "outDir": "dist", // Output compiled JavaScript to the dist directory
+    "moduleResolution": "node"
+  },
+  "include": ["src"], // Include files in the src directory
+  "exclude": ["node_modules", "dist"] // Exclude these directories
+}
