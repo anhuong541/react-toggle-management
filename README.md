@@ -1,6 +1,6 @@
 # React Toggle Global Management
 
-A simple lightweight library for managing toggle global states in React. Better than Redux and simpler than Zustand
+A lightweight React library for managing toggleable global state—designed to be simpler than Zustand and more focused than Redux.
 
 ## Installation
 
@@ -79,4 +79,3 @@ This project is licensed under the MIT License.
 ---
 
 If you have any questions or issues, feel free to open an issue or contact the maintainer.
-
