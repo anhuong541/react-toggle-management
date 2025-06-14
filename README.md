@@ -46,19 +46,39 @@ export default function Component() {
   const { toggle, isOpen, open, close, reset } = useToggle('toggle-key-input')
   return (
     <div className="space-y-2 space-x-3 p-5">
-      <button className={styleButton} onClick={toggle}>
+      <button onClick={toggle}>
         Toggle
       </button>
-      <button className={styleButton} onClick={open}>
+      <button onClick={open}>
         Open
       </button>
-      <button className={styleButton} onClick={close}>
+      <button onClick={close}>
         Close
       </button>
-      <button className={styleButton} onClick={reset}>
+      <button onClick={reset}>
         Reset
       </button>
       <p>isOpen: {isOpen ? 'true' : 'false'}</p>
+    </div>
+  )
+}
+```
+
+Read or trigger other toggle state
+
+```tsx
+export default function Component2() {
+  const { toggle, getIsOpen } = useToggle('toggle-1')
+
+  const toggle2IsOpen = getIsOpen('toggle-2')
+
+  const triggerToggle2 = () => toggle('toggle-2')
+  
+  return (
+    <div className="space-y-2 space-x-3 p-5">
+      <button onClick={triggerToggle2}>
+        Toggle
+      </button>
     </div>
   )
 }
