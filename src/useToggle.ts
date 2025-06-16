@@ -14,16 +14,19 @@ export function useToggle(defaultKey: string) {
 
   const isOpen = useSyncExternalStore(
     store.subscribe,
-    () => store.getState()[defaultKey] ?? false,
-    () => false // <-- getServerSnapshot fallback
+    () => store.getState().has(defaultKey) ?? false,
+    () => false
   )
 
-  const getIsOpen = useCallback(
+  const readIsOpen = useCallback(
     (key?: string) => {
-      return store.getState()[key ?? defaultKey] ?? false
+      return store.getState().has(key ?? defaultKey) ?? false
     },
     [defaultKey, store]
   )
+
+  // Now these functions accept an optional key parameter.
+  // If no key is provided, they use the defaultKey from the hook input.
 
   const open = useCallback(
     (key?: string) => {
@@ -49,7 +52,7 @@ export function useToggle(defaultKey: string) {
   const reset = useCallback(
     (key?: string) => {
       if (key) {
-        const initialValue = store.getState()[key] ?? false
+        const initialValue = store.getState().has(key) ?? false
         store.setToggle(key, initialValue)
       } else {
         store.reset()
@@ -64,6 +67,6 @@ export function useToggle(defaultKey: string) {
     close,
     toggle,
     reset,
-    getIsOpen
+    readIsOpen
   }
 }

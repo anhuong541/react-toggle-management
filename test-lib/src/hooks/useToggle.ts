@@ -14,13 +14,13 @@ export function useToggle(defaultKey: string) {
 
   const isOpen = useSyncExternalStore(
     store.subscribe,
-    () => store.getState()[defaultKey] ?? false,
+    () => store.getState().has(defaultKey) ?? false,
     () => false
   )
 
   const readIsOpen = useCallback(
     (key?: string) => {
-      return store.getState()[key ?? defaultKey] ?? false
+      return store.getState().has(key ?? defaultKey) ?? false
     },
     [defaultKey, store]
   )
@@ -52,7 +52,7 @@ export function useToggle(defaultKey: string) {
   const reset = useCallback(
     (key?: string) => {
       if (key) {
-        const initialValue = store.getState()[key] ?? false
+        const initialValue = store.getState().has(key) ?? false
         store.setToggle(key, initialValue)
       } else {
         store.reset()

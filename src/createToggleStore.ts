@@ -1,4 +1,4 @@
-type ToggleState = Record<string, boolean>
+type ToggleState = Set<string>
 type Listener = () => void
 
 export type ToggleStore = {
@@ -6,11 +6,11 @@ export type ToggleStore = {
   subscribe: (listener: Listener) => () => void
   setToggle: (key: string, value: boolean) => void
   toggle: (key: string) => void
-  reset: () => void // Add a reset function
+  reset: () => void
 }
 
 export const createToggleStore = (
-  initialState: ToggleState = {}
+  initialState: ToggleState = new Set()
 ): ToggleStore => {
   let state: ToggleState = initialState
   const listeners = new Set<Listener>()
@@ -23,13 +23,17 @@ export const createToggleStore = (
   }
 
   const setToggle = (key: string, value: boolean) => {
-    if (state[key] === value) return // Avoid unnecessary updates
-    state = { ...state, [key]: value }
+    if (state.has(key) === value) return
+    if (value) {
+      state.add(key)
+    } else {
+      state.delete(key)
+    }
     listeners.forEach((listener) => listener())
   }
 
   const toggle = (key: string) => {
-    const current = state[key] ?? false
+    const current = state.has(key)
     setToggle(key, !current)
   }
 
