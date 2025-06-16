@@ -6,7 +6,7 @@ import { createToggleStore } from './createToggleStore'
 
 interface ToggleStateContextProviderProps {
   children: React.ReactNode
-  initialState?: Record<string, boolean>
+  initialState?: Set<string>
 }
 
 // Create a default store instance (can be overridden)
