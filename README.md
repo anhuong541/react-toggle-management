@@ -42,7 +42,7 @@ Import useToggle hook to handle toggle state
 ```tsx
 import { useToggle } from 'react-toggle-management'
 
-export default function Component() {
+export default function Component1() {
   const { toggle, isOpen, open, close, reset } = useToggle('toggle-key-input')
   return (
     <div className="space-y-2 space-x-3 p-5">
@@ -68,15 +68,15 @@ Read or trigger other toggle state
 
 ```tsx
 export default function Component2() {
-  const { toggle, getIsOpen } = useToggle('toggle-1')
+  const { toggle, getIsOpen } = useToggle('toggle-key-input-2')
 
-  const toggle2IsOpen = getIsOpen('toggle-2')
+  const toggle1IsOpen = getIsOpen('toggle-key-input-1')
 
-  const triggerToggle2 = () => toggle('toggle-2')
-  
+  const triggerToggle1 = () => toggle('toggle-key-input-1')
+
   return (
     <div className="space-y-2 space-x-3 p-5">
-      <button onClick={triggerToggle2}>
+      <button onClick={triggerToggle1}>
         Toggle
       </button>
     </div>
