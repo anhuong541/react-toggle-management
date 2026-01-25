@@ -25,9 +25,6 @@ export function useToggle(defaultKey: string) {
     [defaultKey, store]
   )
 
-  // Now these functions accept an optional key parameter.
-  // If no key is provided, they use the defaultKey from the hook input.
-
   const open = useCallback(
     (key?: string) => {
       store.setToggle(key ?? defaultKey, true)
