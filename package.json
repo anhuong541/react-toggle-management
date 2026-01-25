@@ -23,8 +23,11 @@
   "license": "ISC",
   "description": "A lightweight React library for managing toggleable global state—designed to be simpler than Zustand and more focused than Redux.",
   "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "@vitejs/plugin-rsc": "^0.5.16",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-server-dom-parcel": "^19.2.3",
+    "react-server-dom-webpack": "^19.2.3"
   },
   "devDependencies": {
     "@types/react": "^19.1.6",
