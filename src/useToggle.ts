@@ -8,7 +8,7 @@ export function useToggle(defaultKey: string) {
 
   if (!store) {
     throw new Error(
-      'useToggle must be used within a ToggleStateContextProvider'
+      'useToggle must be used within a ToggleGlobalProvider'
     )
   }
 
@@ -49,8 +49,7 @@ export function useToggle(defaultKey: string) {
   const reset = useCallback(
     (key?: string) => {
       if (key) {
-        const initialValue = store.getState().has(key) ?? false
-        store.setToggle(key, initialValue)
+        store.resetKey(key)
       } else {
         store.reset()
       }

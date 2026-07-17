@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useMemo } from 'react'
+import React, { useState } from 'react'
 import ToggleStateContext from './ToggleContext'
 import { createToggleStore } from './createToggleStore'
 
@@ -9,17 +9,13 @@ interface ToggleStateContextProviderProps {
   initialState?: Set<string>
 }
 
-// Create a default store instance (can be overridden)
-const defaultToggleStore = createToggleStore()
-
 export default function ToggleGlobalProvider({
   children,
   initialState
 }: ToggleStateContextProviderProps) {
-  // Create or use a store instance
-  const store = useMemo(() => {
-    return initialState ? createToggleStore(initialState) : defaultToggleStore
-  }, [initialState])
+  // Created once per Provider instance; later changes to initialState are ignored,
+  // matching useState's lazy-initializer semantics.
+  const [store] = useState(() => createToggleStore(initialState))
 
   return (
     <ToggleStateContext.Provider value={store}>

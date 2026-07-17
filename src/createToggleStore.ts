@@ -7,12 +7,14 @@ export type ToggleStore = {
   setToggle: (key: string, value: boolean) => void
   toggle: (key: string) => void
   reset: () => void
+  resetKey: (key: string) => void
 }
 
 export const createToggleStore = (
   initialState: ToggleState = new Set()
 ): ToggleStore => {
-  let state: ToggleState = initialState
+  const initialSnapshot = new Set(initialState)
+  let state: ToggleState = new Set(initialState)
   const listeners = new Set<Listener>()
 
   const getState = () => state
@@ -37,8 +39,12 @@ export const createToggleStore = (
     setToggle(key, !current)
   }
 
+  const resetKey = (key: string) => {
+    setToggle(key, initialSnapshot.has(key))
+  }
+
   const reset = () => {
-    state = initialState
+    state = new Set(initialSnapshot)
     listeners.forEach((listener) => listener())
   }
 
@@ -47,6 +53,7 @@ export const createToggleStore = (
     subscribe,
     setToggle,
     toggle,
-    reset
+    reset,
+    resetKey
   }
 }
